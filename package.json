@@ -1,0 +1,16 @@
+{
+  "name": "magicSniffer",
+  "version": "0.0.0",
+  "description": "Identify a file type given its raw binary, using magic numbers.",
+  "main": "magicSniffer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "magicNumbers",
+    "binary",
+    "FileApi"
+  ],
+  "author": "etienne@spillemaeker.com",
+  "license": "MIT"
+}
