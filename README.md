@@ -20,7 +20,9 @@ TODO
 Tests
 -----
 
-TODO
+```
+lein test
+```
 
 
 License
