@@ -57,8 +57,12 @@ var magicNumbers = {
         magic = magicNumbers[format];
         match = true;
 
-        for(i=0; i<magic.length; i++){
-          match = match && magic[i] === dataView.getUint8(i);
+        try {
+          for(i=0; i<magic.length; i++){
+            match = match && magic[i] === dataView.getUint8(i);
+          }
+        } catch (e) {
+          match = false;
         }
 
         if(match) return format;
