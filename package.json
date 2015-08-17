@@ -1,6 +1,6 @@
 {
   "name": "magicSniffer",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Identify a file type given its raw binary, using magic numbers.",
   "main": "magicSniffer.js",
   "scripts": {
