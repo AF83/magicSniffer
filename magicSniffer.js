@@ -20,36 +20,34 @@ var magicNumbers = {
   psd: [56, 66, 80, 83]
 };
 
-modules.export = function() {
-  return {
-    sliceBlob: function(blob, start, end, type){
-      var trueSlice = blob.slice || blob.mozSlice || blob.webkitSlice;
-      return trueSlice.call(blob, start, end);
-    },
+modules.export = {
+  sliceBlob: function(blob, start, end, type){
+    var trueSlice = blob.slice || blob.mozSlice || blob.webkitSlice;
+    return trueSlice.call(blob, start, end);
+  },
 
-    // dataView object returned by given by jDataView
-    sniffFormat: function(dataView) {
-      // look at http://www.htmlgoodies.com/html5/tutorials/determine-an-images-type-using-the-javascript-filereader.html//fbid=Qyi5YQZ-XRT
-      //check whether the jpg are little or big endians
-      var format, magic, i, match;
+  // dataView object returned by given by jDataView
+  sniffFormat: function(dataView) {
+    // look at http://www.htmlgoodies.com/html5/tutorials/determine-an-images-type-using-the-javascript-filereader.html//fbid=Qyi5YQZ-XRT
+    //check whether the jpg are little or big endians
+    var format, magic, i, match;
 
-      for(format in magicNumbers){
-        magic = magicNumbers[format];
-        match = true;
+    for(format in magicNumbers){
+      magic = magicNumbers[format];
+      match = true;
 
-        try {
-          for(i=0; i<magic.length; i++){
-            match = match && magic[i] === dataView.getUint8(i);
-          }
-        } catch (e) {
-          match = false;
+      try {
+        for(i=0; i<magic.length; i++){
+          match = match && magic[i] === dataView.getUint8(i);
         }
-
-        if(match) return format;
+      } catch (e) {
+        match = false;
       }
 
-      // if we could not sniff it...
-      return 'unknown';
+      if(match) return format;
     }
-  };
-}
+
+    // if we could not sniff it...
+    return 'unknown';
+  }
+};
