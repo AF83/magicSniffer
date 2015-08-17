@@ -20,7 +20,7 @@ var magicNumbers = {
   psd: [56, 66, 80, 83]
 };
 
-modules.export = {
+module.exports = {
   sliceBlob: function(blob, start, end, type){
     var trueSlice = blob.slice || blob.mozSlice || blob.webkitSlice;
     return trueSlice.call(blob, start, end);
